@@ -37,18 +37,12 @@ export default {
     },
     /**设置高度 */
     setHeight: (store, height) => {
-        store.setState({ height }, () => {
-            console.log(`store.height:${store.state.height}`);
-        })
+        store.setState({ height })
     },/**设置上间距 */
     setMarginTop: (store, marginTop) => {
-        store.setState({ marginTop }, () => {
-            console.log(`store.marginTop:${store.state.marginTop}`);
-        })
+        store.setState({ marginTop })
     },
-    setList: (store, list) => {
-        store.setState({ list }, () => {
-            console.log(`store.list:${store.state.list}`);
-        })
+    setList: (store, AiList) => {
+        store.setState({ AiList })
     },
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.scss';
-import useStore from '../store';
+import useStore from '../../../store';
 const { useEffect, useState } = React;
 
 export default function ChatAi(props) {
