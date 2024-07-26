@@ -123,6 +123,5 @@ app.post('/chat', getChat);
 
 // 启动服务
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-    // open(`http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);    
 });
