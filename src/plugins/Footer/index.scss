@@ -1,0 +1,47 @@
+@import '@/asset/common.scss';
+
+.Footer {
+    background-color: #ffa700;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;    
+    height: 5rem;
+
+    .textarea {
+        width: 20.734rem;
+        margin: .8rem 0 0 1.067rem;
+        @include borderRadius(100rem);
+        @include flex;
+        @include alignItems;
+        @include font16;
+        padding: .534rem 1.067rem;
+        height: 1.6rem;
+        line-height: 150%;
+        position: relative;
+        z-index: 8;
+        color: $fontColor;
+        border: .067rem solid $grey;
+
+        &::placeholder {
+            color: $grey;
+        }
+    }
+
+    .btn {
+        position: absolute;
+        width: 2.267rem;
+        height: 2.267rem;
+        top: 1.067rem;
+        right: 1.2rem;
+        @include borderRadius(1.067rem);
+        background: linear-gradient(125deg, #06A7FF 40%, #06A7FF 100%);
+        z-index: 9;
+
+        .btn-img {
+            width: 1.467rem;
+            height: 1.467rem;
+        }
+    }
+}

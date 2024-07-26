@@ -1,0 +1,45 @@
+$white:#fff;
+$black:#000;
+$fontColor: #1f1f1f;
+$fontBlue: #06A7FF;
+$grey:rgba(#000, 0.6);
+$cdn: "https://cdn1.cmread.com/ues";
+
+@mixin font14 {
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+@mixin font16 {
+    font-size: 1.067rem;
+    font-weight: 500;
+}
+
+@mixin font18 {
+    font-size: 1.2rem;    
+    font-weight: 500;
+}
+
+@mixin flex {
+    display: flex;
+    display: -webkit-flex;
+}
+
+@mixin inlineBlock {
+    display: inline-block;
+}
+
+@mixin alignItems ($pos: center) {
+    align-items: $pos;
+    -webkit-align-items: $pos;
+}
+
+@mixin justifyContent($pos: center) {
+    justify-content: $pos;
+    -webkit-justify-content: $pos;
+}
+
+@mixin borderRadius($r: .534rem) {
+    border-radius: $r;
+    -webkit-border-radius: $r;
+}

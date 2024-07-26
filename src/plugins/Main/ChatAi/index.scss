@@ -1,0 +1,16 @@
+@import '@/asset/common.scss';
+
+.ChatAi {
+    text-align: left;
+
+    .ai-say {
+        margin-top: .8rem;
+        width: auto;
+        display: inline-block;
+        padding: .8rem;
+        background-color: $white;
+        color: $fontColor;
+        @include borderRadius(0.667rem);
+        @include font18;
+    }
+}

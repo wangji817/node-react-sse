@@ -1,0 +1,16 @@
+@import '@/asset/common.scss';
+
+.ChatUser {
+    text-align: right;
+    
+    .user-say {
+        margin-top: .8rem;
+        width: auto;
+        display: inline-block;
+        padding: .8rem;
+        background-color: $fontBlue;
+        color: $white;
+        @include borderRadius(0.667rem);
+        @include font18;
+    }
+}
