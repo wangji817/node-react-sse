@@ -55,7 +55,6 @@ export default function Footer(props) {
                                     aiData = data;
                                     setAiChat(data);
                                 }
-                                console.warn(aiData?.data?.isEnd);
                                 aiData?.data?.isEnd === 1 && setIsChat(false);
                                 break;
                             default:
