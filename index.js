@@ -121,6 +121,13 @@ const getChat = (req, res) => {
 app.get('/chat', getChat);
 app.post('/chat', getChat);
 
+const renderIndex = (req, res) => {
+    // 使用res.render方法渲染视图，并传递数据    
+    res.render('index', null);
+}
+app.use(express.static('dist'));
+app.get('/', renderIndex);
+
 // 启动服务
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

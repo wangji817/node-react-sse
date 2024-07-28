@@ -4,20 +4,24 @@ $fontColor: #1f1f1f;
 $fontBlue: #06A7FF;
 $grey:rgba(#000, 0.6);
 $cdn: "https://cdn1.cmread.com/ues";
+$lineHeight: 150%;
 
 @mixin font14 {
     font-size: .8rem;
     font-weight: 500;
+    line-height: $lineHeight;
 }
 
 @mixin font16 {
     font-size: 1.067rem;
     font-weight: 500;
+    line-height: $lineHeight;
 }
 
 @mixin font18 {
-    font-size: 1.2rem;    
+    font-size: 1.2rem;
     font-weight: 500;
+    line-height: $lineHeight;
 }
 
 @mixin flex {

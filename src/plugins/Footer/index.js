@@ -21,8 +21,8 @@ export default function Footer(props) {
     const textareaRef = useRef();
 
     const getLastAiContent = (data = {}, lastData = {}) => {
-        lastData.data.content += data?.data?.content || "";
-        return lastData || data;
+        data.data.content = (lastData?.data?.content || "") + (data?.data?.content || "");
+        return data;
     }
 
     const sendMsg = () => {
@@ -35,6 +35,7 @@ export default function Footer(props) {
             setUser({ msg }, () => {
                 textareaRef.current.value = "";
                 let aiData = null;
+                window.currentChunk = 0;
                 getChat(msg, (result) => {
                     if (result) {
                         const { aiType = "", eventType, data } = result;
@@ -54,6 +55,7 @@ export default function Footer(props) {
                                     aiData = data;
                                     setAiChat(data);
                                 }
+                                console.warn(aiData?.data?.isEnd);
                                 aiData?.data?.isEnd === 1 && setIsChat(false);
                                 break;
                             default:
