@@ -3,8 +3,8 @@ const axios = require("axios");
 const axiosApi = {
     initAxios: (options = {
         baseURL: 'https://wap.cmread.com',//请求环境域名    
-        timeout: 60 * 1000,//超时时间
-        headers : {
+        timeout: 600 * 1000,//超时时间
+        headers: {
             "Content-Type": "application/json",
         }
     }) => {

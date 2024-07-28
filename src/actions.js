@@ -1,22 +1,86 @@
+import {
+    debugFlag,
+} from '../src/util/common';
 export default {
+    setUser: (store, userData, callback) => {
+        const { AiList = [] } = store.state;
+        store.actions.setList([...AiList, {
+            aiType: "user",
+            data: userData
+        }], callback);
+    },
+    setAiChat: (store, aiChatData, callback) => {
+        const { AiList = [] } = store.state;
+        store.actions.setList([...AiList, {
+            aiType: "chatAi",
+            data: aiChatData
+        }], callback);
+    },
+    setLastAiChat: (store, aiChatData, callback) => {
+        const { AiList = [] } = store.state;
+        let _AiList = AiList;
+        _AiList[_AiList.length - 1] = {
+            aiType: "chatAi",
+            data: aiChatData
+        };
+        store.actions.setList(_AiList, callback);
+    },
+    getAiList: (store) => {
+        const { AiList = [] } = store.state;
+        return AiList;
+    },
     /**获取流式数据 */
-    getChat: (store, question) => {
+    getChat: (store, question, callback) => {
         const url = `/chat?question=${question}`;//当前接口地址
         const eventSource = new EventSource(url);
         eventSource.addEventListener('ReceiveQuestion', (event) => {
-            console.log('Custom Event:', event.data);
-        });
-        eventSource.addEventListener('AnalysisQuestion', (event) => {
-            console.log('Custom Event:', event.data);
-        });
-        eventSource.addEventListener('message', (event) => {
-            console.log('Custom Event:', event.data, typeof event.data);
+            debugFlag && console.log('Custom Event:', event.data, typeof event.data);
             try {
                 const data = JSON.parse(event.data);
+                callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
+            } catch (error) {
+                const data = {
+                    "msg": "成功",
+                    "code": "00000",
+                    "data": {
+                        "chatId": "1e0c97022b954e3a93398b86ff6bb704", "isEnd": 0, "content": "你的问题已收到"
+                    },
+                    "chatId": "1e0c97022b954e3a93398b86ff6bb704",
+                    "action": "state",
+                    "isEnd": 0
+                }
+                callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
+            }
+        });
+        eventSource.addEventListener('AnalysisQuestion', (event) => {
+            debugFlag && console.log('Custom Event:', event.data, typeof event.data);
+            try {
+                const data = JSON.parse(event.data);
+                callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
+            } catch (error) {
+                const data = {
+                    "msg": "成功",
+                    "code": "00000",
+                    "data": {
+                        "chatId": "6b0efc7b9b4e4165b6c96d58c58f1617", "isEnd": 0, "content": "分析完成"
+                    },
+                    "chatId": "6b0efc7b9b4e4165b6c96d58c58f1617",
+                    "action": "state",
+                    "isEnd": 0
+                }
+                callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
+            }
+        });
+        eventSource.addEventListener('message', (event) => {
+            debugFlag && console.log('Custom Event:', event.data, typeof event.data);
+            try {
+                const data = JSON.parse(event.data);
+                callback && callback({ aiType: "chatAi", eventType: "message", data })
                 if (data && data.data && data.data.isEnd === 1) {
                     eventSource.close();
                 }
             } catch (error) {
+                callback && callback({ aiType: "chatAi", eventType: "message", data: {} })
                 eventSource.close();
             }
         });
@@ -27,7 +91,7 @@ export default {
         const Footer = document.querySelector(".Footer");
         const winH = window.innerHeight || window.outerHeight;
         store.actions.setHeight(winH - Header.offsetHeight - Footer.offsetHeight);
-        store.actions.setMarginTop(Header.offsetHeight);        
+        store.actions.setMarginTop(Header.offsetHeight);
     },
     /**窗口尺寸变化监听，重设内容高度 */
     winResize: (store) => {
@@ -42,7 +106,10 @@ export default {
     setMarginTop: (store, marginTop) => {
         store.setState({ marginTop })
     },
-    setList: (store, AiList) => {
-        store.setState({ AiList })
+    setList: (store, AiList, callback) => {
+        store.setState({ AiList }, callback);
     },
+    setIsChat: (store, isChat) => {
+        store.setState({ isChat });
+    }
 }

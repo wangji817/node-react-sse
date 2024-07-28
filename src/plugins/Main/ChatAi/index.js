@@ -1,13 +1,22 @@
 import React from 'react';
 import './index.scss';
-import useStore from '../../../store';
+import MarkdownStream from '@plugins/MarkdownStream';
 const { useEffect, useState } = React;
 
 export default function ChatAi(props) {
-    const [globalState, globalActions] = useStore();    
+    const {
+        data = {}
+    } = props.data || {};
+
+    const {
+        data: chatData,
+    } = data;
+
     return (
         <div className='ChatAi'>
-            <div className='ai-say'>AI说的话</div>
+            <div className='ai-say'>
+                <MarkdownStream source={chatData?.content || ""} />
+            </div>
         </div>
     )
 }

@@ -12,5 +12,10 @@
         color: $fontColor;
         @include borderRadius(0.667rem);
         @include font18;
+
+        ol,
+        ul {
+            padding-left: 1.334rem;
+        }
     }
 }

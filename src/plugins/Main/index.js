@@ -24,20 +24,26 @@ export default function Main(props) {
     }, []);
 
     return (
-        <div className="Main" style={{ height: height, marginTop: marginTop }}>
-            {
-                AiList.map((item, index) => {
-                    if (item.aiType === "user") {
-                        return (
-                            <ChatUser data={item} />
-                        )
-                    } else if (item.aiType === "chatAi") {
-                        return (
-                            <ChatAi data={item} />
-                        )
-                    }
-                })
-            }
+        <div className="Main" style={{ height: height, top: marginTop }}>
+            <div className="ai-list">
+                {
+                    AiList.map((item, index) => {
+                        if (item.aiType === "user") {
+                            return (
+                                <div className="dialog" key={`user${index}`}>
+                                    <ChatUser data={item} />
+                                </div>
+                            )
+                        } else if (item.aiType === "chatAi") {
+                            return (
+                                <div className="dialog" key={`chatAi${index}`}>
+                                    <ChatAi data={item} />
+                                </div>
+                            )
+                        }
+                    })
+                }
+            </div>
         </div>
     )
 }

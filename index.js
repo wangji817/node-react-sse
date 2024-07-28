@@ -24,7 +24,7 @@ const ssePost = (question = "", callback) => {
     const url = '/nap/aiagent/api/stream/chat';//当前接口地址
     const ins = initAxios({
         baseURL: 'https://wap.cmread.com',//请求环境域名    
-        timeout: 60 * 1000,//超时时间
+        timeout: 600 * 1000,//超时时间
         headers
     });
     const res = post(ins, url, { question }, {
@@ -80,7 +80,7 @@ app.use(bodyParser.json());
 
 const getChat = (req, res) => {
     // 使用res.render方法渲染视图，并传递数据
-    const question = req?.query?.question || req?.body?.question || "";    
+    const question = req?.query?.question || req?.body?.question || "";
     if (question) {
         res.writeHead(200, {
             'Content-Type': 'text/event-stream',
@@ -98,7 +98,7 @@ const getChat = (req, res) => {
             // 处理接收到的 SSE 数据
             let streamData = result.toString();
             console.log(streamData)
-            res.write(streamData);
+            res.write(result);
             // if (streamData) {
             //     let eType = streamData.match(eventReg);
             //     let eData = streamData.replace(eventDataReg, "");
@@ -123,5 +123,5 @@ app.post('/chat', getChat);
 
 // 启动服务
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);    
+    console.log(`Server is running on port ${port}`);
 });
