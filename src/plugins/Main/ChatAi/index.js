@@ -8,6 +8,9 @@ import useStore from '../../../store';/**状态管理入口文件 */
 export default function ChatAi(props) {
     const [globalState, globalActions] = useStore();
     const {
+        isChat
+    } = globalState;
+    const {
         clickBook,
         preventDefault,
     } = globalActions;
@@ -25,14 +28,18 @@ export default function ChatAi(props) {
         isEnd = 0,
         books = [],
     } = chatData;
-    
+
+    //md流式输出回调方法
+    const mdCallback = () => {
+    }
+
     return (
         <div className='ChatAi'>
             <div className='ai-say'>
-                <MarkdownStream source={chatData?.content || ""} />
+                <MarkdownStream source={chatData?.content || ""} callback={mdCallback} />
             </div>
             {
-                isEnd === 1 && <div className='ai-info'>
+                isEnd === 1 && !isChat && <div className='ai-info'>
                     {
                         imageUrl && <Image onClick={(e) => {
                             resourceUrl && (location.href = resourceUrl);

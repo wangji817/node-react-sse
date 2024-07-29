@@ -7,15 +7,14 @@ export default function Scroller(props) {
     const [globalState, globalActions] = useStore();
 
     const {
-        setScrollerRef,
+        showScroll
+    } = globalState;
+
+    const {
+        scrollToBottom
     } = globalActions;
 
-    const scrollerRef = useRef();
-
-    useEffect(() => {
-        setScrollerRef(scrollerRef);
-    }, [])
     return (
-        <div className="Scroller" ref={scrollerRef}></div>
+        <div className="Scroller" style={{ display: showScroll ? "block" : "none" }} onClick={scrollToBottom}></div>
     )
 }

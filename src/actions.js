@@ -118,9 +118,6 @@ export default {
     setWatchScroll: (store, watchScroll) => {
         store.setState({ watchScroll });
     },
-    setScrollerRef: (store, scrollerRef) => {
-        store.setState({ scrollerRef });
-    },
     scrollBottom: (store) => {
         const {
             aiListRef,
@@ -130,6 +127,10 @@ export default {
             aiListRef.current.scrollTo(0, aiListRef.current.scrollHeight);
         }
     },
+    scrollToBottom: (store) => {
+        const { aiListRef } = store.state;
+        aiListRef?.current && aiListRef.current.scrollTo(0, aiListRef.current.scrollHeight);
+    },
     //取消默认事件
     preventDefault: (store, e, callback) => {
         e && e.preventDefault();
@@ -138,5 +139,8 @@ export default {
     //点击书籍触发事件，有多种场景，1、书封是讲书，2、内容是详情页跳转
     clickBook: (store, type = "", book = {}) => {
         console.log(type, book)
+    },
+    showScroll: (store, showScroll) => {
+        store.setState({ showScroll });
     },
 }

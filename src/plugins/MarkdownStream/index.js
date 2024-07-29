@@ -5,13 +5,9 @@ import useStore from '../../store';/**状态管理入口文件 */
 window.currentChunk = 0;
 const MarkdownStream = ({ source }) => {
     const [globalState, globalActions] = useStore();
-    const {
-        aiListRef,
-        watchScroll,
-    } = globalState;
 
     const {
-        scrollBottom
+        scrollBottom,
     } = globalActions;
 
     const [currentMarkdown, setCurrentMarkdown] = useState('');

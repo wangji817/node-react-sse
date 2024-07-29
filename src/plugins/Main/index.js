@@ -12,7 +12,6 @@ export default function Main(props) {
         height,
         marginTop,
         AiList,
-        scrollerRef,
     } = globalState;
 
     const {
@@ -20,6 +19,7 @@ export default function Main(props) {
         winResize,
         setAiListRef,
         setWatchScroll,
+        showScroll,
     } = globalActions;
 
     const aiListRef = useRef();
@@ -58,7 +58,7 @@ export default function Main(props) {
             const scrollHeight = e.target.scrollHeight;
             const clientHeight = e.target.clientHeight;
             const scrollTop = e.target.scrollTop;
-            scrollerRef?.current && (scrollerRef.current.style.display = scrollHeight - clientHeight - scrollTop >= 100 ? "block" : "none")
+            showScroll(scrollHeight - clientHeight - scrollTop >= 100);
         })
     }
 
