@@ -16,13 +16,23 @@ export default function Footer(props) {
         setAiChat,
         setIsChat,
         setLastAiChat,
+        setWatchScroll,
+        scrollBottom,
     } = globalActions;
 
     const textareaRef = useRef();
 
     const getLastAiContent = (data = {}, lastData = {}) => {
-        data.data.content = (lastData?.data?.content || "") + (data?.data?.content || "");
-        return data;
+        const content = (lastData?.data?.content || "") + (data?.data?.content || "");
+        let obj = {
+            ...data,
+            ...lastData,
+        }        
+        obj.data.content = content;
+        obj.isEnd = data.isEnd;
+        obj.data.isEnd = data.data.isEnd;
+        console.log(obj);
+        return obj;
     }
 
     const sendMsg = () => {
@@ -36,6 +46,8 @@ export default function Footer(props) {
                 textareaRef.current.value = "";
                 let aiData = null;
                 window.currentChunk = 0;
+                setWatchScroll(true);
+                scrollBottom();
                 getChat(msg, (result) => {
                     if (result) {
                         const { aiType = "", eventType, data } = result;
@@ -76,7 +88,19 @@ export default function Footer(props) {
     }
     return (
         <div className="Footer">
-            <textarea className="textarea" ref={textareaRef} rows="auto" placeholder="有问题尽管问我" ></textarea>
+            <textarea className="textarea" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
+                onKeyDown={(e) => {
+                    if (e.key == 'Enter') {
+                        e.preventDefault()
+                    }
+                    e.persist();
+                    setTimeout(() => {
+                        if (e.key == "Enter") {
+                            sendMsg()
+                        }
+                    }, 100);
+                }}
+            ></textarea>
             <button className="btn" onClick={sendMsg} >
                 <img src="https://cdn1.cmread.com/ues/4a/552708090d6392da981710eecd0f0c72404a/pic.jpg" className="btn-img" />
             </button>

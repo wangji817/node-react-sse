@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import useStore from '../../store';/**状态管理入口文件 */
 
 window.currentChunk = 0;
 const MarkdownStream = ({ source }) => {
+    const [globalState, globalActions] = useStore();
+    const {
+        aiListRef,
+        watchScroll,
+    } = globalState;
+
+    const {
+        scrollBottom
+    } = globalActions;
+
     const [currentMarkdown, setCurrentMarkdown] = useState('');
     useEffect(() => {
-        const aiListDom = document.querySelector('.ai-list');
-        if (aiListDom) {
-            aiListDom.scrollTo(0, aiListDom.scrollHeight);
-        }
+        scrollBottom();
     }, [currentMarkdown]);
 
     useEffect(() => {

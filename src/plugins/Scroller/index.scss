@@ -1,0 +1,13 @@
+@import '@/asset/common.scss';
+
+.Scroller {
+    position: fixed;
+    width: 3.067rem;
+    height: 2rem;
+    background: url($cdn + "/59/55273bdc97b45876712357c837b98b8fe159/pic.jpg") no-repeat;
+    background-size: 100% auto;
+    right: 1.334rem;
+    bottom: 6.4rem;    
+    z-index: 6;
+    display: none;
+}

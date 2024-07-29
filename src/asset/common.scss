@@ -1,8 +1,9 @@
 $white:#fff;
+$normal: #ccc;
 $black:#000;
 $fontColor: #1f1f1f;
 $fontBlue: #06A7FF;
-$grey:rgba(#000, 0.6);
+$grey: rgba(#000, 0.6);
 $cdn: "https://cdn1.cmread.com/ues";
 $lineHeight: 150%;
 
@@ -46,4 +47,19 @@ $lineHeight: 150%;
 @mixin borderRadius($r: .534rem) {
     border-radius: $r;
     -webkit-border-radius: $r;
+}
+
+@mixin flex {
+    display: flex;
+    display: -webkit-flex;
+}
+
+@mixin child-flex {
+    flex: 1;
+}
+
+@mixin text-overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

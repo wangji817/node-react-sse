@@ -111,5 +111,32 @@ export default {
     },
     setIsChat: (store, isChat) => {
         store.setState({ isChat });
-    }
+    },
+    setAiListRef: (store, aiListRef) => {
+        store.setState({ aiListRef });
+    },
+    setWatchScroll: (store, watchScroll) => {
+        store.setState({ watchScroll });
+    },
+    setScrollerRef: (store, scrollerRef) => {
+        store.setState({ scrollerRef });
+    },
+    scrollBottom: (store) => {
+        const {
+            aiListRef,
+            watchScroll,
+        } = store.state;
+        if (aiListRef.current && watchScroll) {
+            aiListRef.current.scrollTo(0, aiListRef.current.scrollHeight);
+        }
+    },
+    //取消默认事件
+    preventDefault: (store, e, callback) => {
+        e && e.preventDefault();
+        callback && callback();
+    },
+    //点击书籍触发事件，有多种场景，1、书封是讲书，2、内容是详情页跳转
+    clickBook: (store, type = "", book = {}) => {
+        console.log(type, book)
+    },
 }
