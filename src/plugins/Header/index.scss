@@ -1,40 +1,5 @@
 @import '@/asset/common.scss';
 
 .Header {
-    height: 11rem;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-    overflow: hidden;
-    z-index: 10;
-
-    .header-bg {
-        background: url($cdn + "/c6/5527d20306d78c564d8ea740719521ef99c6/pic.jpg") no-repeat;
-        background-size: cover;
-        height: 11rem;
-        @include flex;
-        @include alignItems;
-        padding: 0 1.067rem;
-
-        .wel-text {
-            background: url($cdn + "/23/55279b5feeeb4b9dc5c201803e7cf870ac23/pic.jpg") no-repeat;
-            background-size: contain;
-            width: 11.3rem;
-            height: 2.667rem;
-            padding: .934rem;
-            @include alignItems;
-            @include justifyContent;
-            color: $white;
-        }
-
-        .avatar-img {
-            position: absolute;
-            width: 15rem;
-            height: 15rem;
-            right: -2rem;
-            top: 0;
-        }
-    }
 
 }

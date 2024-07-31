@@ -34,35 +34,35 @@ export default function ChatAi(props) {
     }
 
     return (
-        <div className='ChatAi'>
-            <div className='ai-say'>
+        <div className='ChatAi text-left'>
+            <div className='ai-say mt-12 w-auto inline-block p-12 bg-white max-w-available rounded-[.667rem] text-[1.067rem] font-medium leading-normal'>
                 <MarkdownStream source={chatData?.content || ""} callback={mdCallback} />
             </div>
             {
-                isEnd === 1 && !isChat && <div className='ai-info'>
+                isEnd === 1 && !isChat && <div className='ai-info mt-12 rounded-[.667rem] overflow-hidden'>
                     {
-                        imageUrl && <Image onClick={(e) => {
+                        imageUrl && <img onClick={(e) => {
                             resourceUrl && (location.href = resourceUrl);
-                        }} width={"100%"} preview={false} src={imageUrl} />
+                        }} width={"100%"} src={imageUrl} />
                     }
                     {
-                        books && books.length > 0 && <div className='book-list'>
+                        books && books.length > 0 && <div className='book-list bg-white p-12'>
                             {
                                 books.map((item, index) => {
                                     const { bookName, bookCover, authorName = "", paperBookId, awardList = [], rankingList = [], categoryList = [] } = item;
                                     const isBuyBook = paperBookId && paperBookId != '-1';
                                     return (
-                                        <div className='book-item' key={`book${index}`}>
-                                            <div className='book-cover' onClick={(e) => {
+                                        <div className='book-item flex p-6 bg-slate-200 rounded-[.534rem]' key={`book${index}`}>
+                                            <div className='book-cover w-52 h-68' onClick={(e) => {
                                                 preventDefault(e, clickBook)
                                             }}>
-                                                <Image className='bk-img' preview={false} src={bookCover} />
+                                                <img className='bk-img w-52 h-68' src={bookCover} />
                                             </div>
-                                            <div className='book-info' onClick={(e) => {
+                                            <div className='book-info flex-1 overflow-hidden ml-10' onClick={(e) => {
                                                 preventDefault(e, clickBook)
                                             }}>
-                                                <div className='book-name'>{bookName}</div>
-                                                <div className='book-author'>{isBuyBook ? `纸书` : `电子书`} · {authorName || "无名者"}</div>
+                                                <div className='book-name max-w-full truncate text-[1.067rem] mt-6'>{bookName}</div>
+                                                <div className='book-author max-w-full truncate text-[.934rem] mt-8'>{isBuyBook ? `纸书` : `电子书`} · {authorName || "无名者"}</div>
                                             </div>
                                         </div>
                                     )

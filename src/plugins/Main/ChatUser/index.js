@@ -12,8 +12,8 @@ export default function ChatUser(props) {
     } = data;
 
     return (
-        <div className='ChatUser'>
-            <div className='user-say'>{msg}</div>
+        <div className='ChatUser text-right'>
+            <div className='user-say mt-12 w-auto inline-block p-12 text-white bg-06A7FF rounded-[.667rem] text-[1.067rem] leading-normal font-medium text-left max-w-70%'>{msg}</div>
         </div>
     )
 }

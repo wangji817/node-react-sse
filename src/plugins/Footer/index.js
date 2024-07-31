@@ -87,8 +87,8 @@ export default function Footer(props) {
         }
     }
     return (
-        <div className="Footer">
-            <textarea className="textarea" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
+        <div className="Footer bg-yellow-600 fixed bottom-0 w-full h-75 z-10">
+            <textarea className="textarea w-311 h-24 mt-12 ml-16 px-16 py-8 rounded-full flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
                 onKeyDown={(e) => {
                     if (e.key == 'Enter') {
                         e.preventDefault()
@@ -101,8 +101,8 @@ export default function Footer(props) {
                     }, 100);
                 }}
             ></textarea>
-            <button className="btn" onClick={sendMsg} >
-                <img src="https://cdn1.cmread.com/ues/4a/552708090d6392da981710eecd0f0c72404a/pic.jpg" className="btn-img" />
+            <button className="btn absolute w-34 h-34 top-15 right-19 rounded-full bg-06A7FF z-9" onClick={sendMsg} >
+                <img src="https://cdn1.cmread.com/ues/4a/552708090d6392da981710eecd0f0c72404a/pic.jpg" className="btn-img w-22 h-22 mx-auto" />
             </button>
         </div>
     )

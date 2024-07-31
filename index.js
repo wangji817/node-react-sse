@@ -17,7 +17,7 @@ const ssePost = (question = "", callback) => {
         "Content-Type": "application/json",
         "user-id": "1",//默认用户id
         "x-identity-id": "40035561513",//身份id
-        "referer": `https://wap.cmread.com/nap/p/Ai_shutong_saas_ys.jsp?agentId=${aiAgentId}`,//页面来源，防止被后端识别，过滤
+        "referer": `https://wap.cmread.com/nap/p/Ai_shutong_saas.jsp?agentId=${aiAgentId}`,//页面来源，防止被后端识别，过滤
         "conversation-id": "2d049b20-95e7-4ccb-b58c-d93a9ee3f430",//会话id，目前写死一个，如果需要动态创建，则需要发起新的请求
         "ai-agent-id": aiAgentId,
     }

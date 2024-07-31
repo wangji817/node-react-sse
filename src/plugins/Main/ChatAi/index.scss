@@ -1,18 +1,8 @@
 @import '@/asset/common.scss';
 
 .ChatAi {
-    text-align: left;
 
     .ai-say {
-        margin-top: .8rem;
-        width: auto;
-        display: inline-block;
-        padding: .8rem;
-        background-color: $white;
-        color: $fontColor;
-        max-width: -webkit-fill-available;
-        @include borderRadius(0.667rem);
-        @include font16;
 
         ol,
         ul {
@@ -29,51 +19,10 @@
     }
 
     .ai-info {
-        margin-top: .8rem;
-        @include borderRadius(0.667rem);
-        overflow: hidden;
 
         .book-list {
-            background-color: $white;
-            padding: .8rem;
 
             .book-item {
-                @include flex;
-                padding: .4rem;
-                background-color: $normal;
-                @include borderRadius(0.534rem);
-
-                .book-cover {
-                    width: 3.467rem;
-                    height: 4.534rem;
-
-                    .bk-img {
-                        width: 3.467rem;
-                        height: 4.534rem;
-                    }
-                }
-
-                .book-info {
-                    @include child-flex;
-                    overflow: hidden;
-                    margin-left: .534rem;                    
-
-                    .book-name,
-                    .book-author {
-                        max-width: 100%;
-                        @include text-overflow;
-                    }
-                    .book-name {
-                        @include font16;
-                        margin-top: .4rem;
-                    }
-
-                    .book-author {
-                        margin-top: .534rem;
-                        @include font14;
-                        
-                    }
-                }
 
                 &+.book-item {
                     margin-top: 0.8rem;
