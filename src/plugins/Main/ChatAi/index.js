@@ -13,6 +13,7 @@ export default function ChatAi(props) {
     const {
         clickBook,
         preventDefault,
+        scrollBottom,
     } = globalActions;
     const {
         data = {}
@@ -33,6 +34,9 @@ export default function ChatAi(props) {
     const mdCallback = () => {
     }
 
+    useEffect(() => {
+        !isChat && scrollBottom();
+    }, [isChat])
     return (
         <div className='ChatAi text-left'>
             <div className='ai-say mt-12 w-auto inline-block p-12 bg-white max-w-available rounded-[.667rem] text-[1.067rem] font-medium leading-normal'>
