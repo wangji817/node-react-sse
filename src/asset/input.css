@@ -6,4 +6,7 @@
 ::before,
 ::after {
     box-sizing: initial;
+    border-width: initial;
+    border-style: initial;
+    border-color: initial;
 }

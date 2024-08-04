@@ -28,6 +28,7 @@ export default function ChatAi(props) {
         resourceUrl = "",
         isEnd = 0,
         books = [],
+        relatedQuestions = []
     } = chatData;
 
     //md流式输出回调方法
@@ -37,6 +38,7 @@ export default function ChatAi(props) {
     useEffect(() => {
         !isChat && scrollBottom();
     }, [isChat])
+
     return (
         <div className='ChatAi text-left'>
             <div className='ai-say mt-12 w-auto inline-block p-12 bg-white max-w-available rounded-[.667rem] text-[1.067rem] font-medium leading-normal'>
@@ -50,7 +52,7 @@ export default function ChatAi(props) {
                         }} width={"100%"} src={imageUrl} />
                     }
                     {
-                        books && books.length > 0 && <div className='book-list bg-white p-12'>
+                        books && books.length > 0 && <div className='book-list bg-white p-12 rounded-[.667rem]'>
                             {
                                 books.map((item, index) => {
                                     const { bookName, bookCover, authorName = "", paperBookId, awardList = [], rankingList = [], categoryList = [] } = item;
@@ -69,6 +71,17 @@ export default function ChatAi(props) {
                                                 <div className='book-author max-w-full truncate text-[.934rem] mt-8'>{isBuyBook ? `纸书` : `电子书`} · {authorName || "无名者"}</div>
                                             </div>
                                         </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    }
+                    {
+                        relatedQuestions && relatedQuestions.length > 0 && <div className='related-list py-12 rounded-[.667rem]'>
+                            {
+                                relatedQuestions.map((item, index) => {
+                                    return (
+                                        <div className={`related-item p-6 rounded-[.534rem] text-white ${index > 0 ? "mt-12" : ""} border-solid border-white border`} key={`related${index}`}>{item}</div>
                                     )
                                 })
                             }

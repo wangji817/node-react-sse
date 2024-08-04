@@ -24,14 +24,11 @@ export default function Footer(props) {
 
     const getLastAiContent = (data = {}, lastData = {}) => {
         const content = (lastData?.data?.content || "") + (data?.data?.content || "");
-        let obj = {
-            ...data,
-            ...lastData,
-        }        
+        let obj = Object.assign({}, data, lastData)
         obj.data.content = content;
         obj.isEnd = data.isEnd;
         obj.data.isEnd = data.data.isEnd;
-        console.log(obj);
+        obj.data.relatedQuestions = data?.data?.relatedQuestions || [];
         return obj;
     }
 

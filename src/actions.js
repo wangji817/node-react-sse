@@ -31,7 +31,7 @@ export default {
     },
     /**获取流式数据 */
     getChat: (store, question, callback) => {
-        const url = `/chat?question=${question}`;//当前接口地址
+        const url = `/apis/chat?question=${question}`;//当前接口地址
         const eventSource = new EventSource(url);
         eventSource.addEventListener('ReceiveQuestion', (event) => {
             debugFlag && console.log('Custom Event:', event.data, typeof event.data);

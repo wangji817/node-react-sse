@@ -83,7 +83,7 @@ const getChat = (req, res) => {
     const question = req?.query?.question || req?.body?.question || "";
     if (question) {
         res.writeHead(200, {
-            'Content-Type': 'text/event-stream',
+            'Content-Type': 'text/event-stream; charset=utf-8',
             'Cache-Control': 'no-cache',
             'Connection': 'keep-alive',
             'Access-Control-Allow-Origin': '*' // 允许跨域

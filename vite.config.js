@@ -4,7 +4,9 @@ import tailwindcss from 'tailwindcss'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-    plugins: [react()],
+    plugins: [react(), tailwindcss({
+        config: 'tailwind.config.js',
+    })],
     resolve: {
         alias: {
             // @ 替代为 src
@@ -13,22 +15,12 @@ export default defineConfig({
             '@plugins': __dirname + '/src/plugins',
         },
     },
-    css: {
-        postcss: {
-            plugins: [
-                tailwindcss({
-                    config: 'tailwind.config.js',
-                }),
-                // ... 其他 PostCSS 插件
-            ],
-        },
-    },
     server: {
         proxy: {
-            '/': {
+            '/apis': {
                 target: 'http://localhost:8686',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\//, '')
+                rewrite: (path) => path.replace(/^\/apis/, '')
             }
         }
     }
