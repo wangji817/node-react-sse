@@ -12,7 +12,7 @@
 
 # 介绍
 ***
-	前端框架：react+sass+webpack+tailwindcss
+	前端框架：react+sass+vite+tailwindcss-更新vite替换webpack
 	后端：nodejs+express+axios
 	md插件库：react-markdown+markdown-it	
 ***

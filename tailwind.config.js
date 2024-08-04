@@ -17,7 +17,7 @@ const getSpaceings = (nums = 9999, bix = 0.5, opx = '') => {
         spaceings[i] = remToPx(i) + opx;
         break;
       case '%':
-        spaceings[i+"%"] = i + opx;
+        spaceings[i + "%"] = i + opx;
         break;
       default:
         break;
@@ -30,7 +30,7 @@ const getSpaceings = (nums = 9999, bix = 0.5, opx = '') => {
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    '/public/index.html',
+    '/index.html',
   ],
   theme: {
     spacing: {
@@ -42,7 +42,7 @@ module.exports = {
     backgroundImage: theme => ({
       'headbg': `url(${$cdn}/c6/5527d20306d78c564d8ea740719521ef99c6/pic.jpg)`,
       'wel-text': `url(${$cdn}/23/55279b5feeeb4b9dc5c201803e7cf870ac23/pic.jpg)`,
-      '06A7FF': 'linear-gradient(125deg, #06A7FF 40%, #06A7FF 100%)',      
+      '06A7FF': 'linear-gradient(125deg, #06A7FF 40%, #06A7FF 100%)',
       // 你可以添加更多的背景图样式
     }),
     extend: {
