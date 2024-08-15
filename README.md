@@ -3,7 +3,7 @@
 
 # 步骤
 ***
-	1、准备nodejs >= 18，推荐19.1.0
+	1、准备nodejs >= 18
 	2、yarn install 或 npm install
 	3、yarn build
 	4、node index.js
