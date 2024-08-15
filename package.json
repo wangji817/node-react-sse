@@ -10,7 +10,6 @@
   "author": "night",
   "description": "node >= 16 & curr version 19.1.0",
   "main": "./src/index.js",
-  "type": "module",
   "dependencies": {
     "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.8",

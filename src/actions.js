@@ -40,14 +40,7 @@ export default {
                 callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
             } catch (error) {
                 const data = {
-                    "msg": "成功",
-                    "code": "00000",
-                    "data": {
-                        "chatId": "1e0c97022b954e3a93398b86ff6bb704", "isEnd": 0, "content": "你的问题已收到"
-                    },
-                    "chatId": "1e0c97022b954e3a93398b86ff6bb704",
-                    "action": "state",
-                    "isEnd": 0
+                    result: "ok"
                 }
                 callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
             }
@@ -59,14 +52,7 @@ export default {
                 callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
             } catch (error) {
                 const data = {
-                    "msg": "成功",
-                    "code": "00000",
-                    "data": {
-                        "chatId": "6b0efc7b9b4e4165b6c96d58c58f1617", "isEnd": 0, "content": "分析完成"
-                    },
-                    "chatId": "6b0efc7b9b4e4165b6c96d58c58f1617",
-                    "action": "state",
-                    "isEnd": 0
+                    result: "ok"
                 }
                 callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
             }

@@ -6,7 +6,7 @@ setEnvVariable('QIANFAN_ACCESS_KEY', 'e0d3838d18534332bb8b255e915825dc');
 setEnvVariable('QIANFAN_SECRET_KEY', 'd639bcfc991b4356ac57bac3335ab165');
 
 const client = new ChatCompletion();
-async function main() {
+export const main = async () => {
     const resp = await client.chat({
         messages: [
             {
@@ -16,9 +16,8 @@ async function main() {
         ],
         stream: true,   //启用流式返回
     }, 'ERNIE-Speed-128K');
-    for await (const chunk of resp) {
-        console.log(chunk);
-    }
+    console.log(resp)
+    // for await (const chunk of resp) {
+    //     console.log(chunk);
+    // }
 }
-
-main();

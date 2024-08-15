@@ -22,13 +22,11 @@ export default function Footer(props) {
 
     const textareaRef = useRef();
 
-    const getLastAiContent = (data = {}, lastData = {}) => {
-        const content = (lastData?.data?.content || "") + (data?.data?.content || "");
+    const addResult = (data = {}, lastData = {}) => {
+        const result = (lastData?.result || "") + (data?.result || "");
         let obj = Object.assign({}, data, lastData)
-        obj.data.content = content;
-        obj.isEnd = data.isEnd;
-        obj.data.isEnd = data.data.isEnd;
-        obj.data.relatedQuestions = data?.data?.relatedQuestions || [];
+        obj.result = result;
+        obj.is_end = data.is_end;
         return obj;
     }
 
@@ -47,6 +45,7 @@ export default function Footer(props) {
                 scrollBottom();
                 getChat(msg, (result) => {
                     if (result) {
+                        console.log(result, aiData)
                         const { aiType = "", eventType, data } = result;
                         switch (eventType) {
                             case "ReceiveQuestion":
@@ -57,23 +56,21 @@ export default function Footer(props) {
                                 setAiChat(data);
                                 break;
                             case "message":
-                                if (aiData) {
-                                    aiData = getLastAiContent(data, aiData);
-                                    setLastAiChat(aiData);
-                                } else {
+                                if (!aiData) {
                                     aiData = data;
                                     setAiChat(data);
+                                } else {
+                                    aiData = addResult(data, aiData)
+                                    setLastAiChat(aiData);
                                 }
-                                aiData?.data?.isEnd === 1 && setIsChat(false);
+                                data?.is_end && setIsChat(false);
                                 break;
                             default:
                                 break;
                         }
                     } else {
                         setAiChat({
-                            data: {
-                                content: "我还没有学好这个技能"
-                            }
+                            result: "我还没有学好这个技能"
                         })
                         setIsChat(false);
                     }
@@ -84,20 +81,22 @@ export default function Footer(props) {
         }
     }
     return (
-        <div className="Footer bg-yellow-600 fixed bottom-0 w-full h-75 z-10">
-            <textarea className="textarea w-311 h-24 mt-12 ml-16 px-16 py-8 rounded-full flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
-                onKeyDown={(e) => {
-                    if (e.key == 'Enter') {
-                        e.preventDefault()
-                    }
-                    e.persist();
-                    setTimeout(() => {
-                        if (e.key == "Enter") {
-                            sendMsg()
+        <div className="Footer bg-yellow-600 fixed bottom-0 w-full h-75  z-10">
+            <div className='px-16 flex'>
+                <textarea className="textarea h-24 mt-12 px-16 mx-auto py-8 rounded-full flex-1 flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
+                    onKeyDown={(e) => {
+                        if (e.key == 'Enter') {
+                            e.preventDefault()
                         }
-                    }, 100);
-                }}
-            ></textarea>
+                        e.persist();
+                        setTimeout(() => {
+                            if (e.key == "Enter") {
+                                sendMsg()
+                            }
+                        }, 100);
+                    }}
+                ></textarea>
+            </div>
             <button className="btn absolute w-34 h-34 top-15 right-19 rounded-full bg-06A7FF z-9" onClick={sendMsg} >
                 <img src="https://cdn1.cmread.com/ues/4a/552708090d6392da981710eecd0f0c72404a/pic.jpg" className="btn-img w-22 h-22 mx-auto" />
             </button>
