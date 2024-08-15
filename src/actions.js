@@ -62,7 +62,7 @@ export default {
             try {
                 const data = JSON.parse(event.data);
                 callback && callback({ aiType: "chatAi", eventType: "message", data })
-                if (data && data.data && data.data.isEnd === 1) {
+                if (data && data?.is_end) {
                     eventSource.close();
                 }
             } catch (error) {

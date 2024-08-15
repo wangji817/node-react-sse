@@ -53,7 +53,7 @@ const getChat = async (req, res) => {
         }
         // 如果客户端关闭连接，清理资源
         req.on('close', () => {
-            console.log(`${new Date().toLocaleString()} Connection closed`);
+            console.log(`当前：${new Date().toLocaleString()} Connection closed`);
         });
     } else {
         res.end(JSON.stringify({ code: 9999 }));
