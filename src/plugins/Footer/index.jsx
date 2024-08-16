@@ -81,7 +81,7 @@ export default function Footer(props) {
         }
     }
     return (
-        <div className="Footer bg-yellow-600 fixed bottom-0 w-full h-75  z-10">
+        <div className="Footer bg-white fixed bottom-0 w-full h-75  z-10">
             <div className='px-16 flex'>
                 <textarea className="textarea h-24 mt-12 px-16 mx-auto py-8 rounded-full flex-1 flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
                     onKeyDown={(e) => {

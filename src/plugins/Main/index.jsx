@@ -70,8 +70,8 @@ export default function Main(props) {
     }, []);
 
     return (
-        <div className="Main fixed z-5 w-full" style={{ height: height, top: marginTop }}>
-            <div className="ai-list px-16 pb-[10%] overflow-y-scroll h-[90%]" ref={aiListRef}>
+        <div className="Main fixed z-5 w-full z-10" style={{ height: height, top: marginTop }}>
+            <div className="ai-list px-16 overflow-y-scroll h-full" ref={aiListRef}>
                 {
                     AiList.map((item, index) => {
                         if (item.aiType === "user") {
