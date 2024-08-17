@@ -43,7 +43,9 @@ export default function Footer(props) {
                 let aiData = null;
                 window.currentChunk = 0;
                 setWatchScroll(true);
-                scrollBottom();
+                setTimeout(() => {
+                    scrollBottom();
+                }, 100);
                 setIsChat(true);
                 getChat(msg, (result) => {
                     if (result) {

@@ -10,10 +10,12 @@ export default function App() {
   const [globalState, globalActions] = useStore();
 
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <div className='w-full h-full text-center'>
+      <div className='max-w-1024 h-full flex flex-col mx-auto bg-normal'>
+        <Header />
+        <Main />
+        <Footer />
+      </div>
+    </div>
   )
 }

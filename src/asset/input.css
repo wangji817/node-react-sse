@@ -12,9 +12,16 @@
 }
 html,body ,#root{
     height: 100vh;
+    background-color: rgba(0,0,0, 0.4);
 }
 
 #root {
     display: flex;
     flex-direction: column;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
 }

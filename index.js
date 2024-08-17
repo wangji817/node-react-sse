@@ -13,7 +13,9 @@ setEnvVariable('QIANFAN_SECRET_KEY', 'd639bcfc991b4356ac57bac3335ab165');
 const client = new ChatCompletion();//创建chat对象
 
 //发送问题
+let ERNIE = true;
 const chatMsg = async (content) => {
+    ERNIE = !ERNIE;
     return await client.chat({
         messages: [
             {
@@ -22,7 +24,7 @@ const chatMsg = async (content) => {
             },
         ],
         stream: true,   //启用流式返回
-    }, 'ERNIE-Speed-128K');
+    }, ERNIE ? 'ERNIE-Speed-128K' : 'ERNIE-Speed-8K');
 }
 
 // 设置静态文件目录
