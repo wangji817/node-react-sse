@@ -3,6 +3,7 @@ import './index.scss';
 const { useEffect, useState, useRef } = React;
 import { message } from 'antd';
 import useStore from '../../store';/**状态管理入口文件 */
+import sendPng from '@plugins/Footer/send.jpg';
 
 export default function Footer(props) {
     const [globalState, globalActions] = useStore();
@@ -96,7 +97,7 @@ export default function Footer(props) {
                 ></textarea>
             </div>
             <button className="btn absolute w-34 h-34 top-15 right-19 rounded-full bg-06A7FF z-9" onClick={sendMsg} >
-                <img src="https://cdn1.cmread.com/ues/4a/552708090d6392da981710eecd0f0c72404a/pic.jpg" className="btn-img w-22 h-22 mx-auto" />
+                <img src={sendPng} className="btn-img w-22 h-22 mx-auto" />
             </button>
         </div>
     )
