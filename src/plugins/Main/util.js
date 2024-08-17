@@ -1,7 +1,7 @@
 /**公共方法 */
-const getDomain = () => {
-    return "https://wap.cmread.com";
+const getCurrentUrl = () => {
+    return location.href;
 }
 export default {
-    getDomain,
+    getCurrentUrl,
 }

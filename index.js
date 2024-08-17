@@ -40,10 +40,15 @@ const getChat = async (req, res) => {
             'Access-Control-Allow-Origin': '*' // 允许跨域
         });
 
-        const resp = await chatMsg(question);
-        for await (const chunk of resp) {
-            console.log(chunk);
-            res.write(`event:message\ndata:${JSON.stringify(chunk)}\n\n`);
+        try {
+            const resp = await chatMsg(question);
+            for await (const chunk of resp) {
+                console.log(chunk);
+                res.write(`event:message\ndata:${JSON.stringify(chunk)}\n\n`);
+            }
+        } catch (error) {
+            console.log('error===', error);
+            res.write(`event:error\ndata:${JSON.stringify({ code: -1, result: "同时使用的人数过多，请稍后重试" })}\n\n`);
         }
         // 如果客户端关闭连接，清理资源
         req.on('close', () => {

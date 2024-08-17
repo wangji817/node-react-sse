@@ -48,6 +48,7 @@ module.exports = {
     extend: {
       colors: {
         '06A7FF': '#06A7FF',
+        'normal':'#f5f5f5',
       },
       zIndex: {
         ...getSpaceings(999, 1, 'zIndex')

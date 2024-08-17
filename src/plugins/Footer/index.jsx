@@ -43,17 +43,15 @@ export default function Footer(props) {
                 window.currentChunk = 0;
                 setWatchScroll(true);
                 scrollBottom();
+                setIsChat(true);
                 getChat(msg, (result) => {
                     if (result) {
-                        console.log(result, aiData)
-                        const { aiType = "", eventType, data } = result;
+                        // console.log(result, aiData)
+                        const { eventType, data } = result;
                         switch (eventType) {
-                            case "ReceiveQuestion":
-                                setIsChat(true);
+                            case "error":
                                 setAiChat(data);
-                                break;
-                            case "AnalysisQuestion":
-                                setAiChat(data);
+                                setIsChat(false);
                                 break;
                             case "message":
                                 if (!aiData) {
@@ -81,9 +79,9 @@ export default function Footer(props) {
         }
     }
     return (
-        <div className="Footer bg-white fixed bottom-0 w-full h-75  z-10">
+        <div className="Footer bg-white w-full h-75 relative z-10">
             <div className='px-16 flex'>
-                <textarea className="textarea h-24 mt-12 px-16 mx-auto py-8 rounded-full flex-1 flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
+                <textarea className="textarea h-24 mt-12 px-16 mx-auto py-8 bg-normal rounded-full flex-1 flex items-center text-16 font-medium leading-normal relative text-[#1f1f1f]" ref={textareaRef} rows="auto" placeholder="有问题尽管问我"
                     onKeyDown={(e) => {
                         if (e.key == 'Enter') {
                             e.preventDefault()

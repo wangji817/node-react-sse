@@ -70,8 +70,8 @@ export default function Main(props) {
     }, []);
 
     return (
-        <div className="Main fixed z-5 w-full z-10" style={{ height: height, top: marginTop }}>
-            <div className="ai-list px-16 overflow-y-scroll h-full" ref={aiListRef}>
+        <div className="Main z-5 w-full flex-1 overflow-scroll" >
+            <div className="ai-list px-16 h-full overflow-y-scroll" ref={aiListRef}>
                 {
                     AiList.map((item, index) => {
                         if (item.aiType === "user") {
@@ -86,9 +86,16 @@ export default function Main(props) {
                                     <ChatAi data={item} />
                                 </div>
                             )
+                        } else if (item.aiType === "err") {
+                            return (
+                                <div className="dialog" key={`err${index}`}>
+                                    <ChatAi data={item} />
+                                </div>
+                            )
                         }
                     })
                 }
+                <div className='h-20'></div>
             </div>
             <Scroller />
         </div>

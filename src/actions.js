@@ -33,28 +33,16 @@ export default {
     getChat: (store, question, callback) => {
         const url = `/apis/chat?question=${question}`;//当前接口地址
         const eventSource = new EventSource(url);
-        eventSource.addEventListener('ReceiveQuestion', (event) => {
+        eventSource.addEventListener('error', (event) => {
             debugFlag && console.log('Custom Event:', event.data, typeof event.data);
             try {
                 const data = JSON.parse(event.data);
-                callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
+                callback && callback({ aiType: "error", eventType: "error", data })
+                eventSource.close();
             } catch (error) {
-                const data = {
-                    result: "ok"
-                }
-                callback && callback({ aiType: "chatAi", eventType: "ReceiveQuestion", data })
-            }
-        });
-        eventSource.addEventListener('AnalysisQuestion', (event) => {
-            debugFlag && console.log('Custom Event:', event.data, typeof event.data);
-            try {
-                const data = JSON.parse(event.data);
-                callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
-            } catch (error) {
-                const data = {
-                    result: "ok"
-                }
-                callback && callback({ aiType: "chatAi", eventType: "AnalysisQuestion", data })
+                const data = {}
+                callback && callback({ aiType: "error", eventType: "error", data })
+                eventSource.close();
             }
         });
         eventSource.addEventListener('message', (event) => {
