@@ -29,7 +29,7 @@ export default function ChatAi(props) {
 
     return (
         <div className='ChatAi text-left'>
-            <div className='ai-say mt-12 w-auto inline-block p-12 bg-white max-w-available rounded-[.667rem] text-[1.067rem] font-medium leading-normal'>
+            <div className='ai-say mt-12 w-full inline-block p-12 bg-white max-w-available rounded-[.667rem] text-[1.067rem] font-medium leading-normal'>
                 <MarkdownStream source={data?.result || ""} callback={mdCallback} />
             </div>
         </div>

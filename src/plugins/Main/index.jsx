@@ -12,6 +12,7 @@ export default function Main(props) {
         height,
         marginTop,
         AiList,
+        isPc,
     } = globalState;
 
     const {
@@ -28,20 +29,20 @@ export default function Main(props) {
     const watchScroll = () => {
         let startX = 0, startY = 0, endX = 0, endY = 0, scrollTop = 0;
         let setWatchTimer = null;
-        aiListRef.current.addEventListener("touchstart", (e) => {
+        aiListRef.current.addEventListener(isPc ? "mousedown" : "touchstart", (e) => {
             const {
                 clientX = 0,
                 clientY = 0,
-            } = e?.changedTouches[0] || {};
+            } = isPc ? e : (e?.changedTouches[0] || {});
             startX = clientX;
             startY = clientY;
             scrollTop = aiListRef?.current?.scrollTop || 0;
         })
-        aiListRef.current.addEventListener("touchmove", (e) => {
+        aiListRef.current.addEventListener(isPc ? "mousemove" : "touchmove", (e) => {
             const {
                 clientX = 0,
                 clientY = 0,
-            } = e?.changedTouches[0] || {};
+            } = isPc ? e : (e?.changedTouches[0] || {});
             endX = clientX;
             endY = clientY;
             clearTimeout(setWatchTimer);
@@ -49,7 +50,7 @@ export default function Main(props) {
                 setWatchScroll(false);
             }, 1);
         })
-        aiListRef.current.addEventListener("touchend", (e) => {
+        aiListRef.current.addEventListener(isPc ? "mouseup" : "touchend", (e) => {
             if (Math.abs(startY - endY) >= 60) {//下拉超过多少，触发事件机制
 
             }

@@ -6,4 +6,5 @@ export default {
     aiListRef: null,
     watchScroll: true,//是否在流式滚动中未被打断滚动，默认true，如果流式滚动中，触发了用户滚动，设置false则取消流式滚动
     showScroll: false,//下滑箭头对象展示或隐藏
+    isPc: !window.orientation
 }
